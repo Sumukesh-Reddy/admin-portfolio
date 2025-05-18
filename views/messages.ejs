@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Sumukesh Reddy</title>
+    <link rel="stylesheet" href="/css/messages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <h1>Messages</h1>
+        </div>
+    </nav>
+
+    <section id="messages">
+        <div class="messages-container">
+            <h2>Received Messages</h2>
+            <% if (error) { %>
+                <div class="error-message"><%= error %></div>
+            <% } %>
+            <% if (messages.length === 0 && !error) { %>
+                <p class="no-messages">No messages found.</p>
+            <% } else { %>
+                <div class="messages-list">
+                    <% messages.forEach(message => { %>
+                        <div class="message-card">
+                            <div class="message-header">
+                                <h3><%= message.name %></h3>
+                                <span class="message-date"><%= new Date(message.createdAt).toLocaleString() %></span>
+                            </div>
+                            <p class="message-email"><strong>Email:</strong> <%= message.email %></p>
+                            <p class="message-content"><%= message.message %></p>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } %>
+        </div>
+    </section>
+
+    <script src="/js/messages.js"></script>
+</body>
+</html>
