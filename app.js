@@ -20,7 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 const Message = require('./models/message');
 
 // Routes
-app.get('/messages', async (req, res) => {
+app.get('/', async (req, res) => {
   try {
     const messages = await Message.find().sort({ createdAt: -1 });
     res.render('messages', { messages, error: null });
